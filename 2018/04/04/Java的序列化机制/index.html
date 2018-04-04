@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="houfy">
 <meta property="og:description" content="Java的序列化机制     serialVersionUID适用于Java的序列化机制。简单来说，Java的序列化机制是通过判断类的serialVersionUID来验证版本一致性的。在进行反序列化时，JVM会把传来的字节流中的serialVersionUID与本地相应实体类的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-04T01:26:41.977Z">
+<meta property="og:updated_time" content="2018-04-04T01:28:14.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java的序列化机制">
 <meta name="twitter:description" content="Java的序列化机制     serialVersionUID适用于Java的序列化机制。简单来说，Java的序列化机制是通过判断类的serialVersionUID来验证版本一致性的。在进行反序列化时，JVM会把传来的字节流中的serialVersionUID与本地相应实体类的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常，">
@@ -367,9 +367,8 @@
 <p>serialVersionUID有两种显示的生成方式：<br>一是默认的1L，比如：private static final long serialVersionUID = 1L;<br>二是根据类名、接口名、成员方法及属性等来生成一个64位的哈希字段，比如：<br>private static final  long   serialVersionUID = xxxxL;</p>
 <p>当实现java.io.Serializable接口的类没有显式地定义一个serialVersionUID变量时候，Java序列化机制会根据编译的Class自动生成一个serialVersionUID作序列化版本比较用，这种情况下，如果Class文件(类名，方法名等)没有发生变化(增加空格，换行，增加注释等等)，就算再编译多次，serialVersionUID也不会变化的。</p>
 <p>如果我们不希望通过编译来强制划分软件版本，即实现序列化接口的实体能够兼容先前版本，就需要显式地定义一个名为serialVersionUID，类型为long的变量，不修改这个变量值的序列化实体都可以相互进行串行化和反串行化。</p>
-<p>下面用代码说明一下serialVersionUID在应用中常见的几种情况。<br>（1）序列化实体类<br>package com.sf.code.serial;</p>
-<p>import java.io.Serializable;</p>
-<p>public class Person implements Serializable {<br>    private static final long serialVersionUID = 123456789L;<br>    public int id;<br>    public String name;</p>
+<p>下面用代码说明一下serialVersionUID在应用中常见的几种情况。<br>（1）序列化实体类</p>
+<p>package com.sf.code.serial;<br>import java.io.Serializable;<br>public class Person implements Serializable {<br>    private static final long serialVersionUID = 123456789L;<br>    public int id;<br>    public String name;</p>
 <pre><code>public Person(int id, String name) {
     this.id = id;
     this.name = name;
