@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="houfy">
 <meta property="og:description" content="Java的序列化机制     serialVersionUID适用于Java的序列化机制。简单来说，Java的序列化机制是通过判断类的serialVersionUID来验证版本一致性的。在进行反序列化时，JVM会把传来的字节流中的serialVersionUID与本地相应实体类的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-04T01:28:14.361Z">
+<meta property="og:updated_time" content="2018-04-04T01:28:40.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java的序列化机制">
 <meta name="twitter:description" content="Java的序列化机制     serialVersionUID适用于Java的序列化机制。简单来说，Java的序列化机制是通过判断类的serialVersionUID来验证版本一致性的。在进行反序列化时，JVM会把传来的字节流中的serialVersionUID与本地相应实体类的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常，">
@@ -378,8 +378,8 @@ public String toString() {
     return &quot;Person: &quot; + id + &quot; &quot; + name;
 }
 </code></pre><p>}</p>
-<p>（2）序列化功能：<br>package com.sf.code.serial;</p>
-<p>import java.io.FileOutputStream;<br>import java.io.IOException;<br>import java.io.ObjectOutputStream;</p>
+<p>（2）序列化功能：</p>
+<p>package com.sf.code.serial;<br>import java.io.FileOutputStream;<br>import java.io.IOException;<br>import java.io.ObjectOutputStream;</p>
 <p>public class SerialTest {</p>
 <pre><code>public static void main(String[] args) throws IOException {
     Person person = new Person(1234, &quot;wang&quot;);
