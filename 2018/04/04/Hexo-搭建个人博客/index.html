@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fleming's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="什么是Hexo？ Hexo是一个轻量级的Node.js博客框架。 1Hexo的配置文件分为两种，一种是站点配置文件，位于站点根目录下的_config.yml配置文件，另一个是主题配置文件，位于theme文件夹中对应主题的文件夹下的_config.yml。 另外，需要注意的是本文部署hexo的服务器是腾讯云服务器，Ubuntu16.04系统。 安装和配置node.jsWindows下安装在nodej">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[整理] Hexo 搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2018/04/04/Hexo-搭建个人博客/index.html">
+<meta property="og:site_name" content="Fleming&#39;s Blog">
+<meta property="og:description" content="什么是Hexo？ Hexo是一个轻量级的Node.js博客框架。 1Hexo的配置文件分为两种，一种是站点配置文件，位于站点根目录下的_config.yml配置文件，另一个是主题配置文件，位于theme文件夹中对应主题的文件夹下的_config.yml。 另外，需要注意的是本文部署hexo的服务器是腾讯云服务器，Ubuntu16.04系统。 安装和配置node.jsWindows下安装在nodej">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-04T08:50:59.286Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[整理] Hexo 搭建个人博客">
+<meta name="twitter:description" content="什么是Hexo？ Hexo是一个轻量级的Node.js博客框架。 1Hexo的配置文件分为两种，一种是站点配置文件，位于站点根目录下的_config.yml配置文件，另一个是主题配置文件，位于theme文件夹中对应主题的文件夹下的_config.yml。 另外，需要注意的是本文部署hexo的服务器是腾讯云服务器，Ubuntu16.04系统。 安装和配置node.jsWindows下安装在nodej">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/04/Hexo-搭建个人博客/"/>
+
+
+
+
+
+  <title>[整理] Hexo 搭建个人博客 | Fleming's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/houfy-github"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fleming's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Recoding on the road</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/Hexo-搭建个人博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fleming Hou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fleming's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[整理] Hexo 搭建个人博客</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T13:59:00+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>什么是Hexo？</p>
+<p>Hexo是一个轻量级的Node.js博客框架。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hexo的配置文件分为两种，一种是站点配置文件，位于站点根目录下的_config.yml配置文件，另一个是主题配置文件，位于theme文件夹中对应主题的文件夹下的_config.yml。</span><br></pre></td></tr></table></figure>
+<p>另外，需要注意的是本文部署hexo的服务器是腾讯云服务器，Ubuntu16.04系统。</p>
+<h2 id="安装和配置node-js"><a href="#安装和配置node-js" class="headerlink" title="安装和配置node.js"></a>安装和配置node.js</h2><p>Windows下安装<br>在nodejs官网上下载最新的Windows安装包，直接安装即可。</p>
+<p>ubuntu下安装<br>命令行方式安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nodejs</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>编译源码方式安装：<br>在nodejs官网上找到需要下载的源码（不是二进制文件），解压之后进入目录，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
+<p>注意如果需要sudo的话， make和make install 要分开，因为sudo不能传递到&amp;&amp;后面的指令。</p>
+<p>安装npm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure></p>
+<p>验证安装结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
+<p>安装cnpm<br>因为防火墙的缘故，很多境外网站被墙了，所以使用node.js的原生工具npm是无法正常安装模块的，建议使用淘宝前端组的国内镜像，使用他们定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></p>
+<p>使用方法如下：</p>
+<p>从registry.npm.taobao.org 安装所有模块. 当安装的时候发现安装的模块还没有同步过来, 淘宝 NPM 会自动在后台进行同步, 并且会让你从官方 NPM registry.npmjs.org 进行安装. 下次你再安装这个模块的时候, 就会直接从 淘宝 NPM 安装了.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install [name]</span><br></pre></td></tr></table></figure></p>
+<h2 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h2><p>安装和配置GIT<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//git --version</span><br><span class="line">mkdir blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">git init</span><br><span class="line">git config user.name houfy</span><br><span class="line">git config user.email 2898989@qq.com</span><br></pre></td></tr></table></figure></p>
+<h2 id="github"><a href="#github" class="headerlink" title="github"></a>github</h2><p>Github新建项目:账户名.github.io(Initialize this repository with a README)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C &quot;123456789@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<p>连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub<br>添加密钥到ssh-agent<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>添加生成的SSH key到ssh-agent<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p>
+<p>测试添加ssh是否成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+<p>问题：假如ssh-key配置失败，那么只要以下步骤就能完全解决<br>首先，清除所有的key-pair<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -D</span><br><span class="line">rm -r ~/.ssh</span><br></pre></td></tr></table></figure></p>
+<p>删除你在github中的public-key</p>
+<p>重新生成ssh密钥对<br>ssh-keygen -t rsa -C “<a href="mailto:xxx@xxx.com" target="_blank" rel="noopener">xxx@xxx.com</a>“</p>
+<p>接下来正常操作<br>在github上添加公钥public-key:<br>1、首先在你的终端运行 xclip -sel c ~/.ssh/id_rsa.pub将公钥内容复制到剪切板<br>2、在github上添加公钥时，直接复制即可<br>3、保存</p>
+<p>测试：<br>在终端 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>安转了node之后，就可以使用以下命令来安装hexo：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli  或者  npm install hexo -g</span><br></pre></td></tr></table></figure></p>
+<p>检查安装结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure></p>
+<p>使用Hexo<br>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+<p>新建完成后，指定文件夹的目录如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── _config.yml    站点配置信息</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source        博文目录</span><br><span class="line"> |   ├── _drafts    草稿</span><br><span class="line"> |   └── _posts     已发布</span><br><span class="line">└── themes    客网站使用的主题，程序默认的主题landscape</span><br></pre></td></tr></table></figure></p>
+<p>_config.yml 网站的配置信息</p>
+<p>package.json 应用程序的信息。EJS, Stylus 和 Markdown renderer 已默认安装，您可以自由移除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;hexo-site&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.0.0&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;hexo&quot;: &#123;</span><br><span class="line">    &quot;version&quot;: &quot;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;hexo&quot;: &quot;^3.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-archive&quot;: &quot;^0.1.0&quot;,</span><br><span class="line">    &quot;hexo-generator-category&quot;: &quot;^0.1.0&quot;,</span><br><span class="line">    &quot;hexo-generator-index&quot;: &quot;^0.1.0&quot;,</span><br><span class="line">    &quot;hexo-generator-tag&quot;: &quot;^0.1.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-ejs&quot;: &quot;^0.1.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-stylus&quot;: &quot;^0.2.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-marked&quot;: &quot;^0.2.4&quot;,</span><br><span class="line">    &quot;hexo-server&quot;: &quot;^0.1.2&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>scaffolds模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。</p>
+<p>Hexo的模板是指在新建的markdown文件中默认填充的内容。例如，如果您修改scaffold/post.md中的Front-matter内容，那么每次新建一篇文章时都会包含这个修改。</p>
+<p>source资源文件夹是存放用户资源的地方。</p>
+<p>除 posts 文件夹之外，开头命名为 (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p>
+<p>themes主题 文件夹。</p>
+<p>Hexo 会根据主题来生成静态页面。</p>
+<h2 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo g 或 hexo generate 	生成静态文件</span><br><span class="line">hexo s 或 hexo server 	启动Hexo服务</span><br><span class="line">hexo server -p 5000		 指定端口启动Hexo服务</span><br><span class="line">hexo d 或 hexo deploy 		部署资源</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hexo new post “博客名”		新建博文</span><br><span class="line">hexo new page &quot;页面名&quot;		新建页面</span><br></pre></td></tr></table></figure>
+<h2 id="安装hexo插件"><a href="#安装hexo插件" class="headerlink" title="安装hexo插件"></a>安装hexo插件</h2><h3 id="实现远程部署"><a href="#实现远程部署" class="headerlink" title="实现远程部署"></a>实现远程部署</h3><p>安装 git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /blog</span><br><span class="line">vim _config.yml</span><br><span class="line">	deploy:</span><br><span class="line">	  type: git</span><br><span class="line">	  repository: git@github.com:houfy/houfy.github.io.git</span><br><span class="line">	  branch: master</span><br></pre></td></tr></table></figure></p>
+<h3 id="Hexo后台插件"><a href="#Hexo后台插件" class="headerlink" title="Hexo后台插件"></a>Hexo后台插件</h3><p>安装 hexo-admin<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br><span class="line">hexo server -d</span><br><span class="line">open http://localhost:4000/admin/</span><br></pre></td></tr></table></figure></p>
+<p>设置后台密码<br>修改站点配置文件，就是网站根目录下的 _config.yml文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">admin:</span><br><span class="line">  username: myfavoritename</span><br><span class="line">  password_hash: be121740bf988b2225a313fa1f107ca1</span><br><span class="line">  secret: a secret something</span><br></pre></td></tr></table></figure></p>
+<p>username是用户名<br>password_hash是密码的哈希映射值，由于不同版本的node.js的哈希算法是不一样的，所有用以下方法来产生有效的密码哈希值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ node</span><br><span class="line">&gt; const bcrypt = require(&apos;bcrypt-nodejs&apos;)</span><br><span class="line">&gt; bcrypt.hashSync(&apos;your password secret here!&apos;)</span><br><span class="line">//=&gt; &apos;$2a$10$8f0CO288aEgpb0BQk0mAEOIDwPS.s6nl703xL6PLTVzM.758x8xsi&apos;</span><br></pre></td></tr></table></figure></p>
+<p>secret是用于产生cookie值的。<br>在站点配置文件中设置好以下三个值之后，登录 <a href="http://localhost:4000/admin/" target="_blank" rel="noopener">http://localhost:4000/admin/</a> 就会提示输入账号密码。</p>
+<h3 id="实现RRS功能"><a href="#实现RRS功能" class="headerlink" title="实现RRS功能"></a>实现RRS功能</h3><p>安装Feed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure></p>
+<p>配置Feed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim /blog/_config.yml</span><br><span class="line">feed:</span><br><span class="line">  type: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  limit: 20</span><br><span class="line">  hub:</span><br><span class="line">  content:</span><br></pre></td></tr></table></figure></p>
+<p>type - Feed type. (atom/rss2)<br>path - Feed path. (Default: atom.xml/rss2.xml)<br>limit - Maximum number of posts in the feed (Use 0 or false to show all posts)<br>hub - URL of the PubSubHubbub hubs (Leave it empty if you don’t use it)<br>content - (optional) set to ‘true’ to include the contents of the entire post in the feed.</p>
+<h3 id="实现本地搜索功能"><a href="#实现本地搜索功能" class="headerlink" title="实现本地搜索功能"></a>实现本地搜索功能</h3><p>安装 searchdb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure></p>
+<p>配置 searchdb：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure></p>
+<p>除了安装本地搜索，还可以考虑 <em> swiftype </em> 的搜索。</p>
+<h3 id="其他插件"><a href="#其他插件" class="headerlink" title="其他插件"></a>其他插件</h3><p>Less：npm install hexo-renderer-less –save<br>Feed：npm install hexo-generator-feed –save (实现RRS功能)<br>Json-content:npm install hexo-generator-json-content –save<br>QRCode:npm install hexo-helper-qrcode –save    (用于生成分享二维码)<br>Git:npm install hexo-deployer-git –save  (用于支持git部署)<br>Admin: npm install –save hexo-admin (Hexo后台插件)</p>
+<h2 id="更换hexo主题"><a href="#更换hexo主题" class="headerlink" title="更换hexo主题"></a>更换hexo主题</h2><p>Hexo有很多主题，可以在 <em> Hexo官网的主题页面 </em>选择自己喜欢。<br>以Next为例，本站使用的就是Next主题。<br>主题资源：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<p>确认你的Hexo版本在3.0以上，以及Node版本为6.x以上，进入Hexo根目录，获取主题文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
+<p>或者直接在Next的 GitHub主页 下载主题文件，将Next文件夹放到theme文件夹中。</p>
+<p>修改站点配置文件，设置主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line"># Plugins: https://hexo.io/plugins/</span><br><span class="line"># Themes: https://hexo.io/themes/</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<p>重启hexo的开发服务器就能看到新主题的效果了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo hexo server</span><br></pre></td></tr></table></figure></p>
+<p>为hexo设置tags、categrories、图标、头像等</p>
+<h3 id="选择-Scheme"><a href="#选择-Scheme" class="headerlink" title="选择 Scheme"></a>选择 Scheme</h3><p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：<br>  Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白<br>  Mist - Muse 的紧凑版本，整洁有序的单栏外观<br>  Pisces - 双栏 Scheme，小家碧玉似的清新<br>Scheme 的切换通过更改 主题配置文件，搜索 scheme 关键字。<br>你会看到有三行 scheme 的配置，将你需用启用的 scheme 前面注释 # 即可。</p>
+<p>选择 Pisce Scheme<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置主页的Menu"><a href="#设置主页的Menu" class="headerlink" title="设置主页的Menu"></a>设置主页的Menu</h3><p>设定菜单内容，对应的字段是 menu。 菜单内容的设置格式是：item name: link。其中 item name 是一个名称，这个名称并不直接显示在页面上，她将用于匹配图标以及翻译。</p>
+<p>菜单示例配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  archives: /archives</span><br><span class="line">  #about: /about</span><br><span class="line">  #categories: /categories</span><br><span class="line">  tags: /tags</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure></p>
+<p>若你的站点运行在子目录中，请将链接前缀的 / 去掉</p>
+<p>NexT 默认的菜单项有（标注 的项表示需要手动创建这个页面）：</p>
+<p>键值    设定值    显示文本（简体中文）<br>home    home: /    主页<br>archives    archives: /archives    归档页<br>categories    categories: /categories    分类页<br>tags    tags: /tags    标签页<br>about    about: /about    关于页面<br>commonweal    commonweal: /404.html    公益 404<br>设置菜单项的显示文本。在第一步中设置的菜单的名称并不直接用于界面上的展示。Hexo 在生成的时候将使用 这个名称查找对应的语言翻译，并提取显示文本。这些翻译文本放置在 NexT 主题目录下的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">languages/&#123;language&#125;.yml （&#123;language&#125; 为你所使用的语言）。</span><br></pre></td></tr></table></figure></p>
+<p>以简体中文为例，若你需要添加一个菜单项，比如 something。那么就需要修改简体中文对应的翻译文件 languages/zh-Hans.yml，在 menu 字段下添加一项：</p>
+<p>menu:<br>  home: 首页<br>  archives: 归档<br>  categories: 分类<br>  tags: 标签<br>  about: 关于<br>  search: 搜索<br>  commonweal: 公益404<br>  something: 有料</p>
+<p>设定菜单项的图标，对应的字段是 menu_icons。 此设定格式是 item name: icon name，其中 item name 与上一步所配置的菜单名字对应，icon name 是 Font Awesome 图标的 名字。而 enable 可用于控制是否显示图标，你可以设置成 false 来去掉图标。</p>
+<h3 id="菜单图标配置示例"><a href="#菜单图标配置示例" class="headerlink" title="菜单图标配置示例"></a>菜单图标配置示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  # Icon Mapping.</span><br><span class="line">  home: home</span><br><span class="line">  about: user</span><br><span class="line">  categories: th</span><br><span class="line">  tags: tags</span><br><span class="line">  archives: archive</span><br><span class="line">  commonweal: heartbeat</span><br></pre></td></tr></table></figure>
+<h3 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h3><p>编辑 站点配置文件，新增字段 avatar， 值设置成头像的链接地址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avatar: http://i5.tietuku.com/0d972d2b106fc7ea.jpg</span><br></pre></td></tr></table></figure></p>
+<h3 id="网站图标设置"><a href="#网站图标设置" class="headerlink" title="网站图标设置"></a>网站图标设置</h3><p>在主题配置文件中，设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Put your favicon.ico into `hexo-site/source/` directory.</span><br><span class="line">favicon: favicon.ico</span><br></pre></td></tr></table></figure></p>
+<p>把你的网站图标放到站点的source下面</p>
+<p>设置站点的名字、介绍、作者、语言、时区<br>在站点配置文件中修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: Tony&apos;s blog</span><br><span class="line">subtitle:</span><br><span class="line">description: Everthing will going to be all right.</span><br><span class="line">author: Tony Dandelion</span><br><span class="line">language: zh-Hans</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加标签页"><a href="#添加标签页" class="headerlink" title="添加标签页"></a>添加标签页</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>修改blog/source/tags/index.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">  date: 2017-01-28 14:34:11</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加分类页"><a href="#添加分类页" class="headerlink" title="添加分类页"></a>添加分类页</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>修改blog/source/categories/index.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">  date: 2017-01-28 14:34:11</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加关于页"><a href="#添加关于页" class="headerlink" title="添加关于页"></a>添加关于页</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
+<p>修改blog/source/about/index.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: about</span><br><span class="line">  date: 2017-01-28 14:34:11</span><br><span class="line">type: &quot;about&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<p>执行了这三条命令之后，在站点的source目录下就会有tags、categories、about三个文件夹，里面都对应有一个index.md的文件，在tags文件夹中的index.md中，修改type为tags,如下所示，相应的categories和about也把对应位置的type值改为categories和about。</p>
+<h3 id="修改Next文件的头部背景图片"><a href="#修改Next文件的头部背景图片" class="headerlink" title="修改Next文件的头部背景图片"></a>修改Next文件的头部背景图片</h3><p>第一步</p>
+<p>首先在网上找或者自己PS一张心仪的图片,取名background.jpg，把它放在</p>
+<p>Hexo\source\image路径下。</p>
+<p>第二步</p>
+<p>进入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hexo\themes\hexo-theme-next\source\css\_common\components\header</span><br></pre></td></tr></table></figure></p>
+<p>目录，找到 header.styl 文件，双击打开。</p>
+<p>将第一行默认的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header &#123; background: $head-bg; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header &#123; background: url(&apos;../image/background.jpg&apos;); &#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后重新上传博客即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<h3 id="更改站点配色"><a href="#更改站点配色" class="headerlink" title="更改站点配色"></a>更改站点配色</h3><p>编辑 themes\indigo\source\css_partial\variable.less，更改对应的颜色变量。<br>配色参考：Material Design Color Palette Generator<br>注意：使用自定义配色时需把主题配置中的 cdn 关闭，cdn: false。</p>
+<h3 id="添加404页面"><a href="#添加404页面" class="headerlink" title="添加404页面"></a>添加404页面</h3><p>在 hexo/source 目录内新建 404.html。<br>设置元数据信息，如果不想套用主题布局可设置 layout 为 false。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">layout: false    </span><br><span class="line">title: &quot;My Blog Name | 404&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<h3 id="文章添加多个标签"><a href="#文章添加多个标签" class="headerlink" title="文章添加多个标签"></a>文章添加多个标签</h3><p>有两种多标签格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tags: [a, b, c]</span><br><span class="line">或</span><br><span class="line">tags: </span><br><span class="line">  - a</span><br><span class="line">  - b</span><br><span class="line">  - c</span><br></pre></td></tr></table></figure></p>
+<h3 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h3><p>在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。 NexT 提供三种方式来控制文章在首页的显示方式。</p>
+<ol>
+<li>在文章中使用 &lt;!– more –&gt;手动进行截断，Hexo 提供的方式 推荐</li>
+<li>在文章的 front-matter 中添加 description，并提供文章摘录</li>
+<li>自动形成摘要，在 主题配置文件 中添加：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">enable: true</span><br><span class="line">length: 150</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="语言设置"><a href="#语言设置" class="headerlink" title="语言设置"></a>语言设置</h3><p>将languages目录下面的zh-Hans.yml修改为zh-CN.yml或者按照文档中的修改根目录配置文件也行。</p>
+<h2 id="修改样式"><a href="#修改样式" class="headerlink" title="修改样式"></a>修改样式</h2><h3 id="网站标题栏背景颜色"><a href="#网站标题栏背景颜色" class="headerlink" title="网站标题栏背景颜色"></a>网站标题栏背景颜色</h3><p>当使用Pisces主题时，网站标题栏背景颜色是黑色的，感觉不好看，可以在<br>source/css/_schemes/Pisces/_brand.styl中修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.site-meta &#123;</span><br><span class="line">  padding: 20px 0;</span><br><span class="line">  color: white;</span><br><span class="line">  background: $blue-dodger; //修改为自己喜欢的颜色</span><br><span class="line"></span><br><span class="line">  +tablet() &#123;</span><br><span class="line">    box-shadow: 0 0 16px rgba(0,0,0,0.5);</span><br><span class="line">  &#125;</span><br><span class="line">  +mobile() &#123;</span><br><span class="line">    box-shadow: 0 0 16px rgba(0,0,0,0.5);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是，我们一般不主张这样修改源码的，在next/source/css/_custom目录下面专门提供了custom.styl供我们自定义样式的，因此也可以在custom.styl里面添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Custom styles.</span><br><span class="line">.site-meta &#123;</span><br><span class="line">  background: $blue; //修改为自己喜欢的颜色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改内容区域的宽度"><a href="#修改内容区域的宽度" class="headerlink" title="修改内容区域的宽度"></a>修改内容区域的宽度</h3><p>我们用Next主题是发现在电脑上阅读文章时内容两边留的空白较多，这样在浏览代码块时经常要滚动滚动条才能阅读完整，体验不是很好，下面提供修改内容区域的宽度的方法。<br>NexT 对于内容的宽度的设定如下：</p>
+<p>700px，当屏幕宽度 &lt; 1600px<br>900px，当屏幕宽度 &gt;= 1600px<br>移动设备下，宽度自适应<br>如果你需要修改内容的宽度，同样需要编辑样式文件。<br>在Mist和Muse风格可以用下面的方法：<br>编辑主题的 source/css/_variables/custom.styl 文件，新增变量：</p>
+<p>// 修改成你期望的宽度<br>$content-desktop = 700px</p>
+<p>// 当视窗超过 1600px 后的宽度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$content-desktop-large = 900px</span><br></pre></td></tr></table></figure></p>
+<p>当你使用Pisces风格时可以用下面的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">header&#123; width: 90%; &#125;</span><br><span class="line">.container .main-inner &#123; width: 90%; &#125;</span><br><span class="line">.content-wrap &#123; width: calc(100% - 260px); &#125;</span><br></pre></td></tr></table></figure></p>
+<p>参考文档：<br><a href="http://theme-next.iissnan.com/faqs.html" target="_blank" rel="noopener">http://theme-next.iissnan.com/faqs.html</a><br><a href="https://github.com/iissnan/hexo-theme-next/issues/759#issuecomment-202242848" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next/issues/759#issuecomment-202242848</a></p>
+<h3 id="主页显示文章摘要"><a href="#主页显示文章摘要" class="headerlink" title="主页显示文章摘要"></a>主页显示文章摘要</h3><p>默认情况下在主页是把文章内容全部显示出来的，如果在根目录的_config.yml中配置分页:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">per_page: 10</span><br></pre></td></tr></table></figure></p>
+<p>那么每页显示10篇文章，这样的花主页就看起来不是很精简了，可以通过下面的方法来配置主页只显示文章摘要：<br>在themes/next/的_config.yml中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Automatically Excerpt. Not recommand.</span><br><span class="line"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</span><br><span class="line">auto_excerpt:</span><br><span class="line">  enable: false </span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure></p>
+<p>把enable项配置为true就可以了。<br>但是我们也可以看到注释中是不推荐这样做的，因为这样会强制把文章前150个字符做为摘要的，会出现描述不完整的情况，而且有时候会把文章的源码显示出来。<br>那么我们就用推荐的在文章中用<!-- more -->这种方式来作为文章摘要的方式，可以根据每篇文章的不同情况自己来把控摘要的内容。<br>或者是在文章中配置description也是可以的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo+GitHub搭建个人博客</span><br><span class="line">categories: Hexo</span><br><span class="line">comments: true</span><br><span class="line">keywords: Hexo, Blog, GitHub</span><br><span class="line">tags: [Hexo, Blog, GitHub]</span><br><span class="line">description: 使用Hexo在GitHub上搭建个人博客</span><br><span class="line">date: 2017-01-010 13:00:00</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<h3 id="阅读次数统计-使用LeanCloud"><a href="#阅读次数统计-使用LeanCloud" class="headerlink" title="阅读次数统计(使用LeanCloud)"></a>阅读次数统计(使用LeanCloud)</h3><p>参考[文档]{<a href="http://theme-next.iissnan.com/third-party-services.html}" target="_blank" rel="noopener">http://theme-next.iissnan.com/third-party-services.html}</a></p>
+<h3 id="加入网站缩略图标"><a href="#加入网站缩略图标" class="headerlink" title="加入网站缩略图标"></a>加入网站缩略图标</h3><p>加入后就可以在浏览器的标签栏或者是收藏夹里面现实网站的缩略图标了。<br>在themes/next/的_config.yml中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Put your favicon.ico into `hexo-site/source/` directory.</span><br><span class="line">favicon: /images/favicon.ico</span><br></pre></td></tr></table></figure></p>
+<p>然后把图表放到根目录的source/images/下面</p>
+<h3 id="添加友情链接页面"><a href="#添加友情链接页面" class="headerlink" title="添加友情链接页面"></a>添加友情链接页面</h3><p>和前面的添加关于页面、分类页面类似，不同的是Next主题默认是没有这个页面的，需要我们自己添加一些东西，比如文字翻译，添加对应图标等。<br>首先通过下面的命令添加一个页面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page links</span><br></pre></td></tr></table></figure></p>
+<p>会生成source/links/index.md文件。<br>在Next主题配置文件中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  ......</span><br><span class="line">  about: /about</span><br><span class="line">  links: /links</span><br></pre></td></tr></table></figure></p>
+<p>添加图标：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  ......</span><br><span class="line">  links: users</span><br></pre></td></tr></table></figure></p>
+<p>这里如果找到合适的图标呢？可以到fontawesome.io这个网站来找 ，Next里面用的就是这里面的图标。<br>下一步就是要添加翻译了，要不在菜单栏现实的是 menu.links。<br>在next/languages/ 下面编辑对应的语言，添加翻译。<br>比如在zh-CN.yml中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  ...</span><br><span class="line">  links: 友情链接</span><br></pre></td></tr></table></figure></p>
+<p>然后可以随意编辑source/links/index.md文件就可以了</p>
+<h2 id="部署hexo"><a href="#部署hexo" class="headerlink" title="部署hexo"></a>部署hexo</h2><p>hexo server 命令启动的是一个测试服务器，不建议用户生产环境，可以使用Apache或者ngix来部署hexo</p>
+<p>生成Hexo的静态文件用于部署<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo generate</span><br></pre></td></tr></table></figure></p>
+<p>在网站根目录下会生成一个public文件夹，这就是我们要发布的内容，记录下路径为/home/ubuntu/blog/public</p>
+<h2 id="Nginx-反向代理"><a href="#Nginx-反向代理" class="headerlink" title="Nginx - 反向代理"></a>Nginx - 反向代理</h2><p>Windows安装<br>下载地址：<a href="http://nginx.org/en/download.htm" target="_blank" rel="noopener">http://nginx.org/en/download.htm</a><br>下载Nginx并解压至c:\nginx。<br>启动Nginx。进入c:\nginx，双击nginx.exe。默认的端口号为80。<br>修改端口号。修改c:\nginx\conf\nginx.conf，将其中的server节点修改如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	   	listen       80;</span><br><span class="line">	   	server_name  http://127.0.0.1:4000;</span><br><span class="line">	   	#charset koi8-r;</span><br><span class="line">		 #access_log  logs/host.access.log  main;</span><br><span class="line">		 location / &#123;</span><br><span class="line">        proxy_pass  http://127.0.0.1:4000/;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">        proxy_set_header  X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For 	$proxy_add_x_forwarded_for;</span><br><span class="line">	        &#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>重启nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure></p>
+<p>Linux安装ngix并修改根目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ngix</span><br><span class="line">ngix -v</span><br></pre></td></tr></table></figure></p>
+<p>ngix的安装目录为/etc/ngix，所有的配置文件都在这里。ngix的默认首页目录为/usr/share/nginx/html要对其进行修改。</p>
+<p>修改/etc/nginx/sites-available/default中的/usr/share/nginx/html为/home/ubuntu/blog/public<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    listen [::]:80 default_server ipv6only=on;</span><br><span class="line"></span><br><span class="line">    # root /usr/share/nginx/html;</span><br><span class="line">    root /home/ubuntu/blog/public;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line">    .....</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置防火墙、腾讯云服务器开放端口<br>完成上述配置之后需要确保服务器的端口都开放了，腾讯云服务器的默认安全组是不开发任何端口的，需要前往腾讯云控制台进行修改。</p>
+<p>然后修改防火墙，开放80端口，ubuntu有一个易用的防火墙管理工具，名为uwf。我们使用它来进行防火墙管理。</p>
+<p>安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ufw</span><br></pre></td></tr></table></figure></p>
+<p>启用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw enable</span><br><span class="line">sudo ufw default deny</span><br></pre></td></tr></table></figure></p>
+<p>运行以上两条命令后，开启了防火墙，并在系统启动时自动开启。<br>关闭所有外部对本机的访问，但本机访问外部正常。</p>
+<p>查看防火墙状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure></p>
+<p>防火墙版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw version</span><br></pre></td></tr></table></figure></p>
+<p>开启/关闭防火墙 (默认设置是’disable’)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw enable|disable</span><br></pre></td></tr></table></figure></p>
+<p>开启/禁用服务或者端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow|deny [service|port]</span><br></pre></td></tr></table></figure></p>
+<p>为了使mysql可以远程访问，开启mysql的3306端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eg:</span><br><span class="line">sudo  ufw allow  3306</span><br></pre></td></tr></table></figure></p>
+<p>启动、停止、重启ngix<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/nginx start</span><br><span class="line">sudo /etc/init.d/nginx restart</span><br><span class="line">sudo /etc/init.d/nginx stop</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service nginx start</span><br><span class="line">sudo service nginx restart</span><br><span class="line">sudo service nginx stop</span><br></pre></td></tr></table></figure></p>
+<p>查看、关闭端口占用的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lsof -i:80</span><br></pre></td></tr></table></figure></p>
+<p>在使用上面这条命令知道是哪一个进程占用了80端口后就使用kill命令跟上进程ID杀掉进程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill ID</span><br></pre></td></tr></table></figure></p>
+<p>两条命令相互配合就能把端口分配给任何进程了</p>
+<p>在后台将hexo起在固定端口的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nohup hexo server -p 8066 &amp;</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置文件的修改"><a href="#配置文件的修改" class="headerlink" title="配置文件的修改"></a>配置文件的修改</h3><p>修改配置文件的字段值的时候，要注意格式固定为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Key: Value</span><br></pre></td></tr></table></figure></p>
+<p>属性值与冒号之间必须为一个空格，不能是回车或者其他任何东西。</p>
+<h3 id="部署之后，ngix不能及时显示最新修改的情况。"><a href="#部署之后，ngix不能及时显示最新修改的情况。" class="headerlink" title="部署之后，ngix不能及时显示最新修改的情况。"></a>部署之后，ngix不能及时显示最新修改的情况。</h3><p>先执行hexo clean再执行hexo generate，之后再访问80端口，如果效果迁移成功了，就OK了，否则执行下面的操作。</p>
+<p>关闭ngix服务，将hexo的调试服务器开放到80端口。</p>
+<p>访问一次80端口，OK了再切回ngix监听80端口。</p>
+<p>发现命令没有预期的执行效果，需要加上sudo试一试，可能是权限问题。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/04/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Fleming Hou" />
+            
+              <p class="site-author-name" itemprop="name">Fleming Hou</p>
+              <p class="site-description motion-element" itemprop="description">Everthing will going to be all right</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和配置node-js"><span class="nav-number">1.</span> <span class="nav-text">安装和配置node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GIT"><span class="nav-number">2.</span> <span class="nav-text">GIT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github"><span class="nav-number">3.</span> <span class="nav-text">github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">4.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo常用命令"><span class="nav-number">5.</span> <span class="nav-text">Hexo常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo插件"><span class="nav-number">6.</span> <span class="nav-text">安装hexo插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现远程部署"><span class="nav-number">6.1.</span> <span class="nav-text">实现远程部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo后台插件"><span class="nav-number">6.2.</span> <span class="nav-text">Hexo后台插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现RRS功能"><span class="nav-number">6.3.</span> <span class="nav-text">实现RRS功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现本地搜索功能"><span class="nav-number">6.4.</span> <span class="nav-text">实现本地搜索功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他插件"><span class="nav-number">6.5.</span> <span class="nav-text">其他插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换hexo主题"><span class="nav-number">7.</span> <span class="nav-text">更换hexo主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择-Scheme"><span class="nav-number">7.1.</span> <span class="nav-text">选择 Scheme</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置主页的Menu"><span class="nav-number">7.2.</span> <span class="nav-text">设置主页的Menu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#菜单图标配置示例"><span class="nav-number">7.3.</span> <span class="nav-text">菜单图标配置示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#头像设置"><span class="nav-number">7.4.</span> <span class="nav-text">头像设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网站图标设置"><span class="nav-number">7.5.</span> <span class="nav-text">网站图标设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加标签页"><span class="nav-number">8.</span> <span class="nav-text">添加标签页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加分类页"><span class="nav-number">9.</span> <span class="nav-text">添加分类页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加关于页"><span class="nav-number">10.</span> <span class="nav-text">添加关于页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Next文件的头部背景图片"><span class="nav-number">10.1.</span> <span class="nav-text">修改Next文件的头部背景图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改站点配色"><span class="nav-number">10.2.</span> <span class="nav-text">更改站点配色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加404页面"><span class="nav-number">10.3.</span> <span class="nav-text">添加404页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章添加多个标签"><span class="nav-number">10.4.</span> <span class="nav-text">文章添加多个标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章摘要"><span class="nav-number">10.5.</span> <span class="nav-text">文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语言设置"><span class="nav-number">10.6.</span> <span class="nav-text">语言设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改样式"><span class="nav-number">11.</span> <span class="nav-text">修改样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网站标题栏背景颜色"><span class="nav-number">11.1.</span> <span class="nav-text">网站标题栏背景颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改内容区域的宽度"><span class="nav-number">11.2.</span> <span class="nav-text">修改内容区域的宽度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主页显示文章摘要"><span class="nav-number">11.3.</span> <span class="nav-text">主页显示文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阅读次数统计-使用LeanCloud"><span class="nav-number">11.4.</span> <span class="nav-text">阅读次数统计(使用LeanCloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入网站缩略图标"><span class="nav-number">11.5.</span> <span class="nav-text">加入网站缩略图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加友情链接页面"><span class="nav-number">11.6.</span> <span class="nav-text">添加友情链接页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署hexo"><span class="nav-number">12.</span> <span class="nav-text">部署hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-反向代理"><span class="nav-number">13.</span> <span class="nav-text">Nginx - 反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件的修改"><span class="nav-number">13.1.</span> <span class="nav-text">配置文件的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署之后，ngix不能及时显示最新修改的情况。"><span class="nav-number">13.2.</span> <span class="nav-text">部署之后，ngix不能及时显示最新修改的情况。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">houfyHH</span>
+
+  
+
+  
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
